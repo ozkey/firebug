@@ -4,7 +4,7 @@ var ReactDOM = require('react-dom');
 var Container = React.createClass({
     render: function () {
         return (
-           <div>Hello</div>
+           <div>Hello world</div>
         )
     }
 });

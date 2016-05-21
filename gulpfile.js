@@ -12,12 +12,6 @@ var browserify = require('browserify');
 var fs = require("fs");
 var transform = require('vinyl-transform');
 
-
-var plumber = require('gulp-plumber');
-var glob = require('glob');
-var source = require('vinyl-source-stream');
-
-
 gulp.task('cleanPolymer', function(cb) {
     del(['public/assets/polymer-elements/**/*'], cb);
 });
@@ -44,7 +38,7 @@ gulp.task('polymer',['polymerStyles'], function() {
 
 gulp.task('watch_task', ['build'], function() {
     gulp.watch('elements-src/**/*', ['polymer']);
-    gulp.watch('js/**/*', ['scripts','scriptsTest']);
+    gulp.watch('js/**/*', ['scripts']);
 
 });
 
