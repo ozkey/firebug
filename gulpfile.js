@@ -10,6 +10,12 @@ var gulp = require('gulp'),
 var babelify = require('babelify');
 var browserify = require('browserify');
 var fs = require("fs");
+var transform = require('vinyl-transform');
+
+
+var plumber = require('gulp-plumber');
+var glob = require('glob');
+var source = require('vinyl-source-stream');
 
 
 gulp.task('cleanPolymer', function(cb) {
@@ -43,58 +49,15 @@ gulp.task('watch_task', ['build'], function() {
 });
 
 
-gulp.task('reactBabel', ['build'], function() {
-
-
-});
-
-
-
-
-
-// Basic usage
+// babelify browserify
 gulp.task('scripts', function() {
-    // Single entry point to browserify
-    // gulp.src([
-    //         'js/src/app.js',
-    //
-    // ])
-    //     .pipe(browserify({
-    //         insertGlobals : true,
-    //         debug : !gulp.env.production
-    //     }))
-    //     .pipe(gulp.dest('public/js/build'))
-    //
-    //
-
-    // browserify("js/src/app.jsx")
-    //     .transform("babelify", {presets: ["es2015", "react"]})
-    //     .bundle()
-    //     .pipe(fs.createWriteStream("public/js/build/bundle_app.js"));
-    //
-
-    browserify("js/src/app.jsx")
+     browserify("js/src/app.jsx")
         .transform("babelify", {presets: ["es2015", "react"]})
         .bundle()
         .pipe(fs.createWriteStream("public/js/build/app.js"));
-
-
-
 });
 
 
-// Basic usage
-gulp.task('scriptsTest',['scripts'], function() {
-    // Single entry point to browserify
-    gulp.src([
-        'js/test/**/*.js'
-    ])
-        .pipe(browserify({
-            insertGlobals : true,
-            debug : !gulp.env.production
-        }))
-        .pipe(gulp.dest('jsGenTests/'))
-});
 
 /* ==================================================== */
 /* testing */
@@ -102,7 +65,7 @@ gulp.task('scriptsTest',['scripts'], function() {
 
 //
 var karma = require('karma').server;
-gulp.task('test',['scriptsTest'], function () {
+gulp.task('test',['scripts'], function () {
     karma.start({
         configFile:__dirname +  '/karma.conf.js',
         singleRun: false
