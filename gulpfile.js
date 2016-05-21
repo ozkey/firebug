@@ -67,10 +67,17 @@ gulp.task('scripts', function() {
     //
     //
 
-    browserify("js/src/app.js")
+    // browserify("js/src/app.jsx")
+    //     .transform("babelify", {presets: ["es2015", "react"]})
+    //     .bundle()
+    //     .pipe(fs.createWriteStream("public/js/build/bundle_app.js"));
+    //
+
+    browserify("js/src/app.jsx")
         .transform("babelify", {presets: ["es2015", "react"]})
         .bundle()
-        .pipe(fs.createWriteStream("public/js/build/bundle_app.js"));
+        .pipe(fs.createWriteStream("public/js/build/app.js"));
+
 
 
 });
