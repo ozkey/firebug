@@ -1,0 +1,35 @@
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<!--<script src="/threejs/three.min.js"></script>-->
+
+
+<!-- hack to share code with server -->
+<script src="/js/module.js"></script>
+
+<!-- from server-->
+
+<!--<script src="/gameServer/public/js/gameBoard.js"></script>-->
+<!--<script src="/gameServer/public/js/character.js"></script>-->
+
+<!-- client only -->
+<script src="/js/build/app.js"></script>
+
+
+<h1>Experiment</h1>
+
+
+<div style="float:left;width:100px;border-right:1px solid black;height:300px;padding:10px;overflow:scroll-y;">
+    <b>USERS</b>
+    <div id="users"></div>
+</div>
+<div style="float:left;width:300px;height:250px;overflow:scroll-y;padding:10px;">
+    <div id="conversation"></div>
+    <input id="data" style="width:200px;" />
+    <input type="button" id="datasend" value="send" />
+</div>
+
+
+<div id="gameBoard"></div>

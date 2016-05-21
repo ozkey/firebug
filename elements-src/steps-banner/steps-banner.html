@@ -1,0 +1,51 @@
+<link rel="import"  href="../bower_components/polymer/polymer.html">
+
+
+
+<dom-module id="steps-banner">
+
+  <style >
+    /*include('steps-banner/steps-banner.css')*/
+  </style>
+
+  <template>
+    <div class="mod steps-banner {{theme}}  grid">
+      <div class="inner">
+        <div class="bd">
+
+          step
+
+          <span class="step">{{step}}</span>
+          of
+          <span class="step">{{stepOf}}</span>
+          {{stepText}}
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="content-wrapper"><!-- any children are rendered here -->
+      <content></content>
+    </div>
+
+
+  </template>
+
+  <script>
+    Polymer({
+      is: "steps-banner",
+      ready: function() {
+        // set this element's owner property
+        this.theme = "Daniel";
+        this.step = "1";
+        this.stepOf = "2";
+        this.stepText = "text";
+        this.stepText = "text";
+
+      }
+    });
+  </script>
+
+
+</dom-module>
