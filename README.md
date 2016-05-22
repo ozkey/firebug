@@ -36,10 +36,12 @@ firebug project
 * start serer:
   node startServer.js
 * open browser to:  
-  http://localhost:8080/html/experiment.html
+  http://localhost:8080/html/index.html
+* coverage:
+  http://localhost:8080/coverage/coverage/src/
 
 ### Who do I talk to? ###
 
-* https://github.com/ozkey/experiment/issues
+* https://github.com/ozkey/firebug/issues
 
 

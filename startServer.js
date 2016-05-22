@@ -3,25 +3,12 @@
 */
 
 
-//start server routing similar to what apache will do but it give you a socket io
+//start server routing similar to what apache will do but it give you a socket io if you want to use later
 var experimentServerRouting = require(__dirname + '/lib/experimentServerRouting.js');
 experimentServerRouting.experimentServerRoutingInit(__dirname);
-var io =experimentServerRouting.getSocketIo()
-
-var chat = require(__dirname + '/lib/chat.js');
-var chat = new chat(io);
-//start the event manager
-chat.chatEventManager();
+var io =experimentServerRouting.getSocketIo();
 
 
-io.sockets.on('connection', function (socket) {
-    console.log("connection:");
-    // when the client emits 'adduser', this listens and executes
-    socket.on('adduser', function (username) {
-        console.log("db load :");
-    });
-
-});
 
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;
