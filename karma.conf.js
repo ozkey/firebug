@@ -18,6 +18,10 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
+            {pattern: 'js/vendor/jquery-1.12.4.min.js', watched: false, served: true, included: true},
+            {pattern: 'js/vendor/jasmine-jquery.js', watched: false, served: true, included: true},
+                     
+
             {pattern: 'js/test/**/*.js', included: true}
             //'test-main.js',
             //{pattern: '/js/test/*.js', included: false},
@@ -32,14 +36,18 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'js/test/*.js': ['browserify'],
-            'js/src/*.js':  ['coverage']
+            'js/test/**/*.js': ['browserify'],
+            'js/src/**/*.js*':  ['coverage']
 
         },
+
+
         browserify: {
             debug: true,
             insertGlobals : false,
-            transform: [ 'browserify-istanbul']
+            transform: [  'reactify','browserify-istanbul'],
+            //bundleDelay: 1000,  // WAR for karma-browserify race condition
+
             //transform: [
             //    [
             //        istanbul({
@@ -88,6 +96,7 @@ module.exports = function(config) {
         browsers: ['Chrome'],
 
         plugins : [
+            'karma-babel-preprocessor',
             'karma-junit-reporter',
             'karma-chrome-launcher',
             'karma-jasmine',
